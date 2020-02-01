@@ -1,0 +1,24 @@
+{
+  "name": "MyPortfolio",
+  "version": "1.0.0",
+  "description": "This is Yuu's Portfolio.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psbss/MyPortfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/psbss/MyPortfolio/issues"
+  },
+  "homepage": "https://github.com/psbss/MyPortfolio#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2"
+  }
+}
