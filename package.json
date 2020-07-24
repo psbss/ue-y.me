@@ -1,0 +1,22 @@
+{
+  "name": "myportfolio",
+  "version": "0.0.1",
+  "description": "This is my Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psbss/MyPortfolio.git"
+  },
+  "keywords": [
+    "Portfolio"
+  ],
+  "author": "YukiUehara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/psbss/MyPortfolio/issues"
+  },
+  "homepage": "https://github.com/psbss/MyPortfolio#readme"
+}
