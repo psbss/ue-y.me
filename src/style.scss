@@ -1,0 +1,39 @@
+@import "~normalize.css";
+
+body,
+html {
+  height: 100%;
+}
+
+img {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.col {
+  &-3 {
+    margin: 1em;
+    width: 33%;
+  }
+}
+
+.btn-circle {
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 50%;
+  border: solid 1px black;
+}
+
+.trbl-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mt {
+  margin-top: 40vh;
+}
