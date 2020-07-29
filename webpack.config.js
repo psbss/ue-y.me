@@ -16,7 +16,7 @@ module.exports = {
   mode: MODE,
   // デベロッパーサーバの設定
   devServer: {
-    contentBase: "dist",
+    contentBase: "public",
     open: true,
   },
   module: {
