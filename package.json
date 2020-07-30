@@ -1,0 +1,39 @@
+{
+  "name": "myportfolio",
+  "version": "0.0.1",
+  "description": "This is my Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "Run": "npm run TailwindCSSCLI && npx webpack",
+    "DevServer": "npm run TailwindCSSCLI && npx webpack-dev-server",
+    "TailwindCSSCLI": "npx tailwindcss build src/main.css -o src/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psbss/MyPortfolio.git"
+  },
+  "keywords": [
+    "Portfolio"
+  ],
+  "author": "YukiUehara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/psbss/MyPortfolio/issues"
+  },
+  "homepage": "https://github.com/psbss/MyPortfolio#readme",
+  "devDependencies": {
+    "css-loader": "^3.6.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "image-webpack-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "normalize.css": "^8.0.1",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
+    "tailwindcss": "^1.6.0",
+    "webpack": "^4.44.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
