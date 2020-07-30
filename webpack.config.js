@@ -2,7 +2,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 // MODE ? production or development
-const MODE = "development";
+const MODE = "production";
 const enableSourceMap = MODE === "development";
 
 module.exports = {
