@@ -6,7 +6,8 @@
   "scripts": {
     "Run": "npm run TailwindCSSCLI && npx webpack",
     "DevServer": "npm run TailwindCSSCLI && npx webpack-dev-server",
-    "TailwindCSSCLI": "npx tailwindcss build src/main.css -o src/style.css"
+    "TailwindCSSCLI": "npx tailwindcss build src/main.css -o src/style.css",
+    "deploy": "NODE_ENV=production npm run TailwindCSSCLI && npx webpack"
   },
   "repository": {
     "type": "git",

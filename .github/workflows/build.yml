@@ -1,0 +1,43 @@
+name: Make deploy to server
+
+on:
+  push:
+    branches:
+      - master
+  
+jobs:
+  build_and_deploy:
+    name: Package install & Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+           node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: |
+            npm ci
+            npm run deploy --if-present
+        env:
+          CI: true
+        # Artifactのアップロード
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: public
+          path: public/
+      # SSHキーのインストール
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2.0.3
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+      # show SSH key
+      - name: Show SSH_Keys
+        run: |
+            ls -la /home/runner/.ssh
+      # rsyncの実行
+      - name: rsync
+        run: rsync -auvz public/ ${{ secrets.REMOTE_USER }}@psbss.mixh.jp:./www/ue-y.me/
