@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const webpack = require("webpack");
 // MODE ? production or development
 const MODE = "production";
@@ -62,10 +63,15 @@ module.exports = {
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
-          'file-loader',
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'img',
+            },
+          },
           {
             loader: 'image-webpack-loader',
-          },
+          }
         ],
       },
     ],
@@ -80,5 +86,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "src/index.html",
     }),
+    new FaviconsWebpackPlugin({
+      logo: './src/img/favicon.svg',
+      cache: true,
+      prefix: 'assets/',
+    })
   ],
 };
