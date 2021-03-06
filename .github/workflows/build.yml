@@ -22,22 +22,18 @@ jobs:
             npm run deploy --if-present
         env:
           CI: true
-        # Artifactのアップロード
+      # Artifactのアップロード
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
           name: public
           path: public/
-      # SSHキーのインストール
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2.0.3
+      # sync with aws
+      - name: AWS configure credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          key: ${{ secrets.SSH_KEY }}
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
-      # show SSH key
-      - name: Show SSH_Keys
-        run: |
-            ls -la /home/runner/.ssh
-      # rsyncの実行
-      - name: rsync
-        run: rsync -auvz public/ ${{ secrets.REMOTE_USER }}@psbss.mixh.jp:./www/ue-y.me/
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+      - name: S3 sync
+        run: aws s3 sync public/ s3://ue-y.me/ --delete
