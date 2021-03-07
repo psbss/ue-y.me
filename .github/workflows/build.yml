@@ -35,6 +35,7 @@ jobs:
 
   upload-artifact:
     name: Upload-artifact
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Archive Production Artifact
@@ -45,6 +46,7 @@ jobs:
 
   sync-with-s3:
     name: Sync with AWS S3
+    runs-on: ubuntu-latest
     needs: upload-artifact
     steps:
       - name: AWS configure credentials
