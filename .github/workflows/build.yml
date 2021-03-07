@@ -3,7 +3,7 @@ name: Make deploy to server
 on:
   push:
     branches:
-      - push
+      - github/aws_actions
   
 jobs:
   package_install:
