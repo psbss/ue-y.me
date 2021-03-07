@@ -6,10 +6,11 @@ on:
       - master
   
 jobs:
-  build_and_deploy:
-    name: Package install & Build & Deploy
+  # パッケージのインストールとビルド
+  build:
+    name: Package install & Build
     runs-on: ubuntu-latest
-
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
@@ -22,13 +23,23 @@ jobs:
             npm run deploy --if-present
         env:
           CI: true
-      # Artifactのアップロード
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
           name: public
           path: public/
-      # sync with aws
+
+  # S3と同期する
+  sync-with-s3:
+    name: Sync with AWS S3
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: public
+          path: ~/dist/
       - name: AWS configure credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -36,4 +47,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-1
       - name: S3 sync
-        run: aws s3 sync public/ s3://ue-y.me/ --delete
+        run: aws s3 sync ~/dist/ ${{ secrets.AWS_S3_BUCKET_NAME }} --delete
