@@ -3,13 +3,13 @@ name: Make deploy to server
 on:
   push:
     branches:
-      - master
+      - push
   
 jobs:
-  build_and_deploy:
+  package_install:
     name: Package install & Build & Deploy
     runs-on: ubuntu-latest
-
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
@@ -19,16 +19,34 @@ jobs:
       - name: npm install
         run: |
             npm ci
-            npm run deploy --if-present
         env:
           CI: true
-      # Artifactのアップロード
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs:
+      - package_install
+    steps:
+      - name: npm run build
+        run: |
+            npm run deploy --if-present
+
+  upload-artifact:
+    name: Upload-artifact
+    needs: build
+    steps:
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
           name: public
           path: public/
-      # sync with aws
+
+  sync-with-s3:
+    name: Sync with AWS S3
+    needs: upload-artifact
+    steps:
       - name: AWS configure credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
