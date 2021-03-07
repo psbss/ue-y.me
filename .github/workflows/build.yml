@@ -3,7 +3,7 @@ name: Make deploy to server
 on:
   push:
     branches:
-      - github/aws_actions
+      - master
   
 jobs:
   # パッケージのインストールとビルド
@@ -40,8 +40,6 @@ jobs:
         with:
           name: public
           path: ~/dist/
-      - name: Display directory structure
-        run: ls -R
       - name: AWS configure credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
