@@ -6,6 +6,7 @@ on:
       - github/aws_actions
   
 jobs:
+  # パッケージのインストールとビルド
   build:
     name: Package install & Build
     runs-on: ubuntu-latest
@@ -28,6 +29,7 @@ jobs:
           name: public
           path: public/
 
+  # S3と同期する
   sync-with-s3:
     name: Sync with AWS S3
     runs-on: ubuntu-latest
@@ -37,6 +39,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: public
+          path: ~/dist/
+      - name: Display directory structure
+        run: ls -R
       - name: AWS configure credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -44,4 +49,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-1
       - name: S3 sync
-        run: aws s3 sync public/ ${{ secrets.AWS_S3_BUCKET_NAME }} --delete
+        run: aws s3 sync ~/dist/ ${{ secrets.AWS_S3_BUCKET_NAME }} --delete
