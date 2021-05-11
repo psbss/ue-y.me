@@ -1,43 +1,39 @@
 {
-  "name": "myportfolio",
-  "version": "0.0.1",
+  "name": "portfolio",
+  "version": "2.0.0",
   "description": "This is my Portfolio",
   "main": "index.js",
   "scripts": {
-    "Run": "npm run TailwindCSSCLI && npx webpack",
-    "DevServer": "npm run TailwindCSSCLI && npx webpack-dev-server",
+    "build": "npm run clean && npm run TailwindCSSCLI && npx webpack",
     "TailwindCSSCLI": "npx tailwindcss build src/main.css -o src/style.css",
-    "deploy": "NODE_ENV=production npm run TailwindCSSCLI && npx webpack"
+    "deploy": "NODE_ENV=production npm run TailwindCSSCLI && npx webpack",
+    "pre-deploy": "npm run clean && NODE_ENV=production npm run TailwindCSSCLI && npx webpack",
+    "clean": "rm -rf ./public/ ./src/style.css"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/psbss/MyPortfolio.git"
+    "url": "git+https://github.com/psbss/portfolio.git"
   },
-  "keywords": [
-    "Portfolio"
-  ],
-  "author": "YukiUehara",
-  "license": "ISC",
+  "author": "uetyo",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/psbss/MyPortfolio/issues"
+    "url": "https://github.com/psbss/portfolio/issues"
   },
-  "homepage": "https://github.com/psbss/MyPortfolio#readme",
+  "homepage": "https://github.com/psbss/portfolio#readme",
   "devDependencies": {
-    "css-loader": "^3.6.0",
-    "favicons-webpack-plugin": "^4.2.0",
+    "autoprefixer": "^10.2.5",
+    "css-loader": "^5.2.4",
     "file-loader": "^6.2.0",
-    "html-loader": "^1.3.2",
-    "html-webpack-plugin": "^4.5.1",
-    "image-webpack-loader": "^6.0.0",
-    "mini-css-extract-plugin": "^0.9.0",
-    "normalize.css": "^8.0.1",
-    "sass": "^1.32.6",
-    "sass-loader": "^9.0.2",
-    "style-loader": "^1.3.0",
-    "tailwindcss": "^1.9.6",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.2"
-  },
-  "dependencies": {}
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.1",
+    "image-webpack-loader": "^7.0.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.1.0",
+    "style-loader": "^2.0.0",
+    "tailwindcss": "^2.1.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0"
+  }
 }
