@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
-const webpack = require("webpack");
+const loader = require("sass-loader");
+
 // MODE ? production or development
 const MODE = "production";
 const enableSourceMap = MODE === "development";
@@ -13,6 +13,7 @@ module.exports = {
   output: {
     path: `${__dirname}/public`,
     filename: "bundle.js",
+    assetModuleFilename: "img/[hash][ext]"
   },
   mode: MODE,
   // デベロッパーサーバの設定
@@ -62,17 +63,8 @@ module.exports = {
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              outputPath: 'img',
-            },
-          },
-          {
-            loader: 'image-webpack-loader',
-          }
-        ],
+        type: 'asset/resource',
+        loader: 'image-webpack-loader'
       },
     ],
   },
@@ -84,12 +76,7 @@ module.exports = {
     }),
     // html をsrcからdistに移す処理
     new HtmlWebpackPlugin({
-      template: "src/index.html",
+      template: "./src/index.html",
     }),
-    new FaviconsWebpackPlugin({
-      logo: './src/img/favicon.svg',
-      cache: true,
-      prefix: 'assets/',
-    })
   ],
 };
