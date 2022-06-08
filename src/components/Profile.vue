@@ -15,7 +15,7 @@
       <p>GitHub</p>
     </a>
     <a class="icon" href="https://blog.ue-y.me">
-      <img src="../assets/images/twitter.svg" alt="Blog logo" />
+      <img src="../assets/images/blog-logo.png" alt="Blog logo" />
       <p>Blog</p>
     </a>
   </div>
