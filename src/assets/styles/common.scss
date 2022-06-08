@@ -1,0 +1,9 @@
+// Common.scss
+
+$color_dark: #ACB6E5;
+$color_right: #74ebd5;
+
+body {
+  display: flex;
+  background: linear-gradient(to bottom, $color_dark, $color_right);
+}
