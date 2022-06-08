@@ -1,0 +1,19 @@
+// Common.scss
+
+$color_dark: #ACB6E5;
+$color_right: #74ebd5;
+$color_white: #ffffff;
+$color_text_dark: #333333;
+$color_text_right: #fdfdfd;
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, $color_dark, $color_right);
+  
+  a {
+    color: $color_text_dark;
+    text-decoration: none;
+  }
+}
