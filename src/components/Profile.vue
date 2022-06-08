@@ -52,12 +52,12 @@ img {
 .icons {
   margin: 1rem 2.5rem 1rem 2.5rem;
   display: flex;
+  justify-content: center;
   gap: 1.5rem;
 }
 
 .icon {
-  width: 30%;
-  padding: 0 0.5rem;
+  width: 55px;
   text-align: center;
 
   p {
