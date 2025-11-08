@@ -221,6 +221,63 @@
             }
         }
 
+        @media (orientation: landscape) and (max-height: 768px) {
+            body {
+                align-items: flex-start;
+                padding: 20px 0;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 40px;
+                max-width: 100%;
+                padding: 20px 40px;
+            }
+
+            .profile-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex-shrink: 0;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                margin: 0 0 15px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+                margin-bottom: 0;
+            }
+
+            .links {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: none;
+                margin-top: 0;
+                flex: 1;
+                gap: 12px;
+            }
+
+            .link-button {
+                padding: 10px;
+                font-size: 11px;
+            }
+
+            .link-icon {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
     </style>
 </head>
 
@@ -228,12 +285,14 @@
     <div class="gradient-overlay"></div>
 
     <div class="container">
-        <div class="profile-image">
-            <img src="./assets/uetyo.png" alt="上ちょ / uetyo" crossorigin="anonymous">
-        </div>
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="./assets/uetyo.png" alt="上ちょ / uetyo" crossorigin="anonymous">
+            </div>
 
-        <h1>上ちょ / uetyo</h1>
-        <p class="subtitle">Software Developer / iOS</p>
+            <h1>上ちょ / uetyo</h1>
+            <p class="subtitle">Software Developer / iOS</p>
+        </div>
 
         <div class="links">
             <a href="https://x.com/psnzbss" class="link-button" target="_blank" rel="noopener noreferrer">
