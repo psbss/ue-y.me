@@ -43,6 +43,11 @@
             position: relative;
         }
 
+        .profile-section,
+        .info-section {
+            width: 100%;
+        }
+
         .profile-image {
             width: 250px;
             height: 250px;
@@ -221,6 +226,102 @@
             }
         }
 
+        @media (max-width: 768px) and (orientation: landscape) {
+            body {
+                align-items: flex-start;
+                overflow-y: auto;
+            }
+
+            .container {
+                padding: 20px 40px;
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 30px;
+                margin: 20px auto;
+            }
+
+            .profile-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex-shrink: 0;
+            }
+
+            .info-section {
+                flex: 1;
+                text-align: left;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+                margin: 0 0 10px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .links {
+                margin-top: 20px;
+                gap: 8px;
+                max-width: 100%;
+            }
+
+            .link-button {
+                padding: 10px;
+                font-size: 11px;
+            }
+
+            .link-icon {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        @media (max-width: 480px) and (orientation: landscape) {
+            .container {
+                padding: 15px 20px;
+                gap: 20px;
+            }
+
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .subtitle {
+                font-size: 12px;
+            }
+
+            .links {
+                gap: 6px;
+            }
+
+            .link-button {
+                padding: 8px;
+                font-size: 10px;
+                gap: 4px;
+            }
+
+            .link-icon {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
     </style>
 </head>
 
@@ -228,14 +329,17 @@
     <div class="gradient-overlay"></div>
 
     <div class="container">
-        <div class="profile-image">
-            <img src="./assets/uetyo.png" alt="上ちょ / uetyo" crossorigin="anonymous">
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="./assets/uetyo.png" alt="上ちょ / uetyo" crossorigin="anonymous">
+            </div>
         </div>
 
-        <h1>上ちょ / uetyo</h1>
-        <p class="subtitle">Software Developer / iOS</p>
+        <div class="info-section">
+            <h1>上ちょ / uetyo</h1>
+            <p class="subtitle">Software Developer / iOS</p>
 
-        <div class="links">
+            <div class="links">
             <a href="https://x.com/psnzbss" class="link-button" target="_blank" rel="noopener noreferrer">
                 <img src="./assets/x-logo.svg" alt="X - Twitter" class="link-icon">
                 X
@@ -271,6 +375,7 @@
                 </svg>
                 Blog
             </a>
+            </div>
         </div>
     </div>
 </body>
