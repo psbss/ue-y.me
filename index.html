@@ -13,12 +13,26 @@
         }
 
         html {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #acb6e5, #74ebd5);
+        }
+
+        html::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: white;
+            z-index: -1;
+            animation: fadeOutWhite 1.5s ease-in 0.5s forwards;
+            pointer-events: none;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: white;
+            background: transparent;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -27,15 +41,7 @@
         }
 
         .gradient-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, #acb6e5, #74ebd5);
-            opacity: 0;
-            animation: fadeInGradient 1.5s ease-in 0.5s forwards;
-            z-index: -1;
+            display: none;
         }
 
         .container {
@@ -177,9 +183,9 @@
             }
         }
 
-        @keyframes fadeInGradient {
+        @keyframes fadeOutWhite {
             to {
-                opacity: 1;
+                opacity: 0;
             }
         }
 
