@@ -12,9 +12,12 @@
             box-sizing: border-box;
         }
 
+        html {
+            background: #74ebd5;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: #90d1dd;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -33,9 +36,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, #90d1dd, #acb6e5 20%, #74ebd5 70%, #90d1dd);
-            opacity: 0;
-            animation: fadeInGradient 1.5s ease-in 0.5s forwards;
+            background: white;
+            opacity: 1;
+            animation: fadeOutGradient 1.5s ease-in 0.5s forwards;
             z-index: -1;
         }
 
@@ -178,9 +181,9 @@
             }
         }
 
-        @keyframes fadeInGradient {
+        @keyframes fadeOutGradient {
             to {
-                opacity: 1;
+                opacity: 0;
             }
         }
 
@@ -191,7 +194,6 @@
             }
         }
 
-        /* スマホ縦持ち */
         @media (max-width: 600px) and (orientation: portrait) {
             .container {
                 padding: 20px;
@@ -225,17 +227,6 @@
                 height: 20px;
             }
         }
-
-        /* スマホ横持ち */
-        @media (max-width: 900px) and (orientation: landscape) {
-            body {
-                background: white;
-            }
-            .gradient-overlay {
-                background: #acb6e5;
-            }
-        }
-
     </style>
 </head>
 
