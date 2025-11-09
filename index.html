@@ -20,6 +20,11 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            /* iPhoneのSafeArea対応 */
+            padding-top: env(safe-area-insets-top);
+            padding-bottom: env(safe-area-insets-bottom);
+            padding-left: env(safe-area-insets-left);
+            padding-right: env(safe-area-insets-right);
         }
 
         .gradient-overlay {
